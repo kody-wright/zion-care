@@ -2,44 +2,620 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>About | Zion Care</title>
-
+    <title>About Zion Care | Madison, Wisconsin</title>
     <meta
       name="description"
-      content="Learn more about Zion Care in Madison, Wisconsin."
+      content="Learn more about Zion Care, our approach to residential care, leadership, staff, and locations in Madison, Wisconsin."
     />
 
+    <!-- Bootstrap 5.3.8 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
+      crossorigin="anonymous"
     />
 
+    <!-- Bootstrap Icons -->
     <link
+      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 
+    <!-- Site Styles -->
     <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/about.css" />
   </head>
 
   <body>
+    <a href="#main-content" class="skip-link"> Skip to main content </a>
+
+    <!-- =========================================================
+     TOP BAR
+         ========================================================= -->
+
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-inner">
+          <span> Adult Family Home • Madison, Wisconsin </span>
+
+          <a href="tel:+16082093204">
+            <i class="bi bi-telephone-fill"></i>
+            608-209-3204
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+     NAVIGATION
+         ========================================================= -->
+
+    <header class="site-header" id="siteHeader">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Brand -->
+
+          <a
+            class="navbar-brand"
+            href="../index.html"
+            aria-label="Zion Care Home"
+          >
+            <span class="brand-mark"> Z </span>
+
+            <span class="brand-name"> Zion <strong>Care</strong> </span>
+          </a>
+
+          <!-- Mobile Toggle -->
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#primaryNavigation"
+            aria-controls="primaryNavigation"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navigation -->
+
+          <div class="collapse navbar-collapse" id="primaryNavigation">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+              <li class="nav-item">
+                <a class="nav-link active" href="../index.html"> Home </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"> About </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/html/gallery.html"> Gallery </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/html/services.html"> Services </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/html/contact.html"> Contact </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/html/careers.html"> Careers </a>
+              </li>
+
+              <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                <a class="btn btn-zion" href="html/contact.html">
+                  Get in Touch
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
     <main>
+      <!-- =========================
+             PAGE HERO
+        ========================== -->
+      <section class="page-hero">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+              <span class="section-eyebrow"> Get to Know Zion Care </span>
+
+              <h1 class="page-title">
+                Care rooted in
+                <span>home, dignity, and connection.</span>
+              </h1>
+
+              <p class="page-lead">
+                Zion Care is built around the belief that a caring environment
+                should feel welcoming, comfortable, and personal.
+              </p>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="about-hero-card">
+                <div class="about-hero-icon">
+                  <i class="bi bi-house-heart"></i>
+                </div>
+
+                <h2>A place to feel at home.</h2>
+
+                <p>
+                  Our approach centers the individual and the importance of
+                  creating an environment where people can feel comfortable,
+                  respected, and connected.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+             WHO WE ARE / HISTORY
+        ========================== -->
       <section class="section-padding">
         <div class="container">
-          <p class="eyebrow">Zion Care</p>
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+              <div class="about-image-placeholder">
+                <div class="placeholder-content">
+                  <i class="bi bi-house-heart"></i>
 
-          <h1>About</h1>
+                  <span> Zion Care Home </span>
 
-          <p class="section-introduction">
-            This page is reserved for the Zion Care About section.
-          </p>
+                  <small> Replace with an approved Zion Care photo </small>
+                </div>
+              </div>
+            </div>
 
-          <a href="../index.html" class="btn btn-zion mt-4"> Return Home </a>
+            <div class="col-lg-6">
+              <span class="section-eyebrow"> Who We Are </span>
+
+              <h2 class="section-title">
+                A care philosophy built around people.
+              </h2>
+
+              <p class="section-text">
+                Zion Care was created with a simple idea: quality care should
+                exist within an environment that feels like home.
+              </p>
+
+              <p class="section-text">
+                Our philosophy is centered around compassion, comfort, dignity,
+                and meaningful connection. Rather than treating care as simply a
+                list of tasks, Zion Care strives to create a residential
+                experience where each person can feel seen, respected, and
+                valued.
+              </p>
+
+              <p class="section-text">
+                As Zion Care continues to grow, our commitment remains focused
+                on building a welcoming home environment and providing an
+                experience grounded in respect and genuine care.
+              </p>
+
+              <div class="about-values mt-4">
+                <div class="about-value">
+                  <i class="bi bi-heart"></i>
+                  <span>Compassion</span>
+                </div>
+
+                <div class="about-value">
+                  <i class="bi bi-house-heart"></i>
+                  <span>Comfort</span>
+                </div>
+
+                <div class="about-value">
+                  <i class="bi bi-people"></i>
+                  <span>Connection</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+             HISTORY TIMELINE
+        ========================== -->
+      <section class="section-padding section-soft">
+        <div class="container">
+          <div class="text-center mx-auto section-heading">
+            <span class="section-eyebrow"> Our Story </span>
+
+            <h2 class="section-title">Growing with purpose.</h2>
+
+            <p class="section-text">
+              Zion Care's story can be presented here as the organization grows
+              and its history develops.
+            </p>
+          </div>
+
+          <div class="timeline mt-5">
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <i class="bi bi-stars"></i>
+              </div>
+
+              <div class="timeline-content">
+                <span class="timeline-label"> Our Beginning </span>
+
+                <h3>The vision for Zion Care</h3>
+
+                <p>
+                  Add the approved founding story here, including when Zion Care
+                  was established and what inspired its creation.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <i class="bi bi-house"></i>
+              </div>
+
+              <div class="timeline-content">
+                <span class="timeline-label"> Building Home </span>
+
+                <h3>Creating a welcoming environment</h3>
+
+                <p>
+                  Add information about the development of the Zion Care home
+                  and the environment created for residents.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <i class="bi bi-arrow-up-right"></i>
+              </div>
+
+              <div class="timeline-content">
+                <span class="timeline-label"> Looking Ahead </span>
+
+                <h3>Continuing to grow</h3>
+
+                <p>
+                  Add Zion Care's future vision, goals, community involvement,
+                  or plans for additional locations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+             LEADERSHIP
+        ========================== -->
+      <section class="section-padding">
+        <div class="container">
+          <div class="text-center mx-auto section-heading">
+            <span class="section-eyebrow"> Our People </span>
+
+            <h2 class="section-title">Leadership & Staff</h2>
+
+            <p class="section-text">
+              Meet the people who help make Zion Care a welcoming place to call
+              home.
+            </p>
+          </div>
+
+          <div class="row g-4 mt-4">
+            <!-- Staff Member -->
+            <div class="col-sm-6 col-lg-4">
+              <article class="staff-card">
+                <div class="staff-photo">
+                  <div class="staff-photo-placeholder">
+                    <i class="bi bi-person"></i>
+                  </div>
+                </div>
+
+                <div class="staff-content">
+                  <span class="staff-role"> Leadership </span>
+
+                  <h3>Staff Name</h3>
+
+                  <p>
+                    Add approved leadership title and professional biography
+                    here.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Staff Member -->
+            <div class="col-sm-6 col-lg-4">
+              <article class="staff-card">
+                <div class="staff-photo">
+                  <div class="staff-photo-placeholder">
+                    <i class="bi bi-person"></i>
+                  </div>
+                </div>
+
+                <div class="staff-content">
+                  <span class="staff-role"> Care Team </span>
+
+                  <h3>Staff Name</h3>
+
+                  <p>Add approved staff information and biography here.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Staff Member -->
+            <div class="col-sm-6 col-lg-4">
+              <article class="staff-card">
+                <div class="staff-photo">
+                  <div class="staff-photo-placeholder">
+                    <i class="bi bi-person"></i>
+                  </div>
+                </div>
+
+                <div class="staff-content">
+                  <span class="staff-role"> Care Team </span>
+
+                  <h3>Staff Name</h3>
+
+                  <p>Add approved staff information and biography here.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+             LOCATIONS
+        ========================== -->
+      <section class="section-padding section-soft">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+              <span class="section-eyebrow"> Our Location </span>
+
+              <h2 class="section-title">
+                A Madison home designed around connection.
+              </h2>
+
+              <p class="section-text">
+                Zion Care is located in Madison, Wisconsin, providing a
+                residential setting where home and care come together.
+              </p>
+
+              <div class="location-details mt-4">
+                <div class="location-detail">
+                  <div class="location-icon">
+                    <i class="bi bi-geo-alt"></i>
+                  </div>
+
+                  <div>
+                    <span>Address</span>
+                    <strong>
+                      5915 Saturn Dr<br />
+                      Madison, WI 53718
+                    </strong>
+                  </div>
+                </div>
+
+                <div class="location-detail">
+                  <div class="location-icon">
+                    <i class="bi bi-telephone"></i>
+                  </div>
+
+                  <div>
+                    <span>Phone</span>
+
+                    <strong>
+                      <a href="tel:6082093204"> 608-209-3204 </a>
+                    </strong>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=5915%20Saturn%20Dr%2C%20Madison%2C%20WI%2053718"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-primary mt-4"
+              >
+                Get Directions
+                <i class="bi bi-arrow-up-right ms-2"></i>
+              </a>
+            </div>
+
+            <div class="col-lg-7">
+              <div class="location-map">
+                <div class="map-placeholder">
+                  <i class="bi bi-geo-alt-fill"></i>
+
+                  <h3>Zion Care</h3>
+
+                  <p>
+                    5915 Saturn Dr<br />
+                    Madison, WI 53718
+                  </p>
+
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=5915%20Saturn%20Dr%2C%20Madison%2C%20WI%2053718"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    View on Google Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Future Locations -->
+          <div class="future-locations mt-5">
+            <div class="future-location-icon">
+              <i class="bi bi-buildings"></i>
+            </div>
+
+            <div>
+              <span class="section-eyebrow"> Future Locations </span>
+
+              <h3>Growing thoughtfully.</h3>
+
+              <p>
+                Additional Zion Care locations can be added here as the
+                organization expands.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+             CTA
+        ========================== -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-card">
+            <div>
+              <span class="section-eyebrow"> Connect With Us </span>
+
+              <h2>Have questions about Zion Care?</h2>
+
+              <p>
+                We'd be happy to connect and provide more information about our
+                home.
+              </p>
+            </div>
+
+            <div class="cta-actions">
+              <a href="contact.html" class="btn btn-light">
+                Contact Zion Care
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+
+              <a href="tel:6082093204" class="btn btn-outline-light">
+                <i class="bi bi-telephone me-2"></i>
+                608-209-3204
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5">
+            <a href="../index.html" class="footer-brand">
+              <span class="brand-mark">Z</span>
+
+              <span>
+                <strong>Zion Care</strong>
+                <small>Adult Family Home</small>
+              </span>
+            </a>
+
+            <p class="footer-description">
+              Compassionate care. A comfortable home.
+            </p>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <h3 class="footer-heading">Explore</h3>
+
+            <ul class="footer-links">
+              <li>
+                <a href="../index.html"> Home </a>
+              </li>
+
+              <li>
+                <a href="about.html"> About </a>
+              </li>
+
+              <li>
+                <a href="gallery.html"> Gallery </a>
+              </li>
+
+              <li>
+                <a href="services.html"> Services </a>
+              </li>
+
+              <li>
+                <a href="careers.html"> Careers </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-4">
+            <h3 class="footer-heading">Connect</h3>
+
+            <ul class="footer-links">
+              <li>
+                <a href="contact.html"> Contact Us </a>
+              </li>
+
+              <li>
+                <a href="tel:6082093204"> 608-209-3204 </a>
+              </li>
+
+              <li>5915 Saturn Dr</li>
+
+              <li>Madison, WI 53718</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>
+            &copy;
+            <span id="currentYear"></span>
+            Zion Care. All rights reserved.
+          </span>
+
+          <span> Madison, Wisconsin </span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back To Top -->
+    <button
+      type="button"
+      class="back-to-top"
+      id="backToTop"
+      aria-label="Back to top"
+    >
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwxJ09JcYn3nv7wiPVlz7YYJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Site JS -->
+    <script src="../assets/js/main.js"></script>
   </body>
 </html>

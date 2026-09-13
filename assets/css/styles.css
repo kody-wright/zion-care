@@ -704,7 +704,7 @@ a {
 
   overflow: hidden;
 
-  background: #e8eee9;
+  background: var(--zion-blue-100);
 
   border: 1px solid var(--zion-border);
 

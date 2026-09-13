@@ -40,7 +40,7 @@
   width: 62px;
   height: 62px;
   border-radius: 18px;
-  background: #e4efe9;
+  background: #e7f0f6;
   color: var(--zion-blue-700);
   display: flex;
   align-items: center;
@@ -109,7 +109,7 @@
   align-items: center;
   gap: 9px;
   padding: 10px 15px;
-  background: #f3f6f2;
+  background: #e7f0f6;
   border-radius: 100px;
   color: var(--zion-blue-950);
   font-weight: 600;
@@ -210,7 +210,7 @@
 
 .staff-photo {
   aspect-ratio: 1 / 0.9;
-  background: #e5eee9;
+  background: #e7f0f6;
   overflow: hidden;
 }
 
@@ -220,7 +220,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #7b9389;
+  color: var(--zion-blue-950);
 }
 
 .staff-photo-placeholder i {
@@ -261,7 +261,7 @@
   width: 46px;
   height: 46px;
   border-radius: 14px;
-  background: #e4efe9;
+  background: #e7f0f6;
   color: var(--zion-blue-700);
   display: flex;
   align-items: center;
@@ -350,7 +350,7 @@
   width: 58px;
   height: 58px;
   border-radius: 17px;
-  background: #e4efe9;
+  background: #e7f0f6;
   color: var(--zion-blue-700);
   display: flex;
   align-items: center;

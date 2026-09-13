@@ -32,7 +32,7 @@
    GLOBAL
 ========================================================= */
 
-.row>* {
+.row > * {
   padding-right: 0 !important;
 }
 
@@ -55,6 +55,7 @@ html {
 }
 
 body {
+  min-height: 100svh;
   background: var(--zion-cream);
   color: var(--zion-text);
   font-family:
@@ -64,7 +65,6 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-
   line-height: 1.7;
 }
 

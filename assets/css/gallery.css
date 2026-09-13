@@ -2,6 +2,90 @@
    GALLERY
 ========================================= */
 
+.page-hero {
+  position: relative;
+  padding: 90px 0;
+  background: var(--zion-blue-050);
+  overflow: hidden;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  right: -150px;
+  top: -150px;
+  border-radius: 50%;
+  background: var(--zion-blue-100);
+  opacity: 0.7;
+}
+
+.page-title {
+  max-width: 780px;
+  margin: 12px 0 22px;
+
+  color: var(--zion-blue-950);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.page-title span {
+  color: var(--zion-blue-700);
+}
+
+.page-hero-description {
+  max-width: 680px;
+  margin: 0;
+
+  color: var(--zion-muted);
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.page-hero-card {
+  position: relative;
+  z-index: 1;
+
+  padding: 32px;
+  border: 1px solid var(--zion-border);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--zion-shadow);
+}
+
+.page-hero-card-icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+  background: var(--zion-blue-100);
+  color: var(--zion-blue-700);
+
+  font-size: 1.35rem;
+}
+
+.page-hero-card h2 {
+  margin-bottom: 12px;
+
+  color: var(--zion-blue-950);
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+}
+
+.page-hero-card p {
+  margin: 0;
+
+  color: var(--zion-muted);
+  line-height: 1.7;
+}
+
 .gallery-card {
   position: relative;
   aspect-ratio: 4 / 3;

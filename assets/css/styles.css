@@ -1028,7 +1028,7 @@ a {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
@@ -1040,4 +1040,4 @@ a {
 
     animation: none !important;
   }
-}
+} */

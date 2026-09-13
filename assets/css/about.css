@@ -3,62 +3,87 @@
 ========================================= */
 
 .page-hero {
-  background: var(--cream, #f8f5ed);
-  padding: 110px 0 90px;
   position: relative;
+  padding: 90px 0;
+  background: var(--zion-blue-050);
   overflow: hidden;
 }
 
+.page-hero::after {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  right: -150px;
+  top: -150px;
+  border-radius: 50%;
+  background: var(--zion-blue-100);
+  opacity: 0.7;
+}
+
 .page-title {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.8rem, 5vw, 4.8rem);
-  line-height: 1.05;
+  max-width: 780px;
+  margin: 12px 0 22px;
+
   color: var(--zion-blue-950);
-  margin: 18px 0 25px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
 }
 
 .page-title span {
   color: var(--zion-blue-700);
 }
 
-.page-lead {
+.page-hero-description {
   max-width: 680px;
-  font-size: 1.15rem;
+  margin: 0;
+
+  color: var(--zion-muted);
+  font-size: 1.08rem;
   line-height: 1.8;
-  color: #5f6964;
 }
 
-.about-hero-card {
-  background: #fff;
-  border: 1px solid rgba(13, 41, 35, 0.08);
-  border-radius: 28px;
-  padding: 40px;
-  box-shadow: 0 20px 60px rgba(13, 41, 35, 0.08);
+.page-hero-card {
+  position: relative;
+  z-index: 1;
+
+  padding: 32px;
+  border: 1px solid var(--zion-border);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--zion-shadow);
 }
 
-.about-hero-icon {
-  width: 62px;
-  height: 62px;
-  border-radius: 18px;
-  background: #e7f0f6;
-  color: var(--zion-blue-700);
+.page-hero-card-icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.7rem;
-  margin-bottom: 25px;
+
+  border-radius: 16px;
+  background: var(--zion-blue-100);
+  color: var(--zion-blue-700);
+
+  font-size: 1.35rem;
 }
 
-.about-hero-card h2 {
-  font-family: "Playfair Display", serif;
+.page-hero-card h2 {
+  margin-bottom: 12px;
+
   color: var(--zion-blue-950);
-  margin-bottom: 15px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
 }
 
-.about-hero-card p {
-  color: #68716d;
-  line-height: 1.8;
-  margin-bottom: 0;
+.page-hero-card p {
+  margin: 0;
+
+  color: var(--zion-muted);
+  line-height: 1.7;
 }
 
 /* ABOUT IMAGE */

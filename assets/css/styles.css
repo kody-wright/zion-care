@@ -40,20 +40,17 @@
   margin-right: 0 !important; /* FIND BETTER WAY TO FIX IF POSSIBLE*/
 }
 
-* {
-  box-sizing: border-box;
-}
 
 /* html, body {
   margin: 0 !important; 
   padding: 0 !important;
 } */
 
-html {
+/* html {
   min-height: 100svh; 
   scroll-behavior: smooth;
   overscroll-behavior: none;
-}
+} */
 
 body {
   min-height: 100svh;

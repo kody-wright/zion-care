@@ -32,11 +32,15 @@
    GLOBAL
 ========================================================= */
 
-html, body {
+/* html, body {
   width: 100dvw;
   height: 100dvh;
   margin: 0;
   padding: 0;
+} */
+
+* {
+    box-sizing: border-box;
 }
 
 html {
@@ -45,11 +49,8 @@ html {
 }
 
 body {
-
   background: var(--zion-cream);
-
   color: var(--zion-text);
-
   font-family:
     "DM Sans",
     system-ui,

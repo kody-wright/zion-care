@@ -50,6 +50,7 @@
 } */
 
 html {
+  min-height: 100svh; 
   scroll-behavior: smooth;
   overscroll-behavior: none;
 }

@@ -8,8 +8,8 @@
   border-radius: 24px;
   overflow: hidden;
   background: #e5eee9;
-  border: 1px solid rgba(13, 41, 35, 0.08);
-  box-shadow: 0 8px 25px rgba(13, 41, 35, 0.05);
+  border: 1px solid rgba(11, 34, 57, 0.08);
+  box-shadow: 0 8px 25px rgba(11, 34, 57, 0.05);
 }
 
 .gallery-image-button {
@@ -40,7 +40,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(13, 41, 35, 0.08);
+  background: rgba(11, 34, 57, 0.08);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -61,7 +61,7 @@
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.45);
 
-  background: rgba(13, 41, 35, 0.68);
+  background: rgba(11, 34, 57, 0.68);
   color: #fff;
 
   display: flex;
@@ -76,7 +76,7 @@
 }
 
 .gallery-card:hover .gallery-expand {
-  background: rgba(13, 41, 35, 0.88);
+  background: rgba(11, 34, 57, 0.88);
   transform: scale(1.05);
 }
 

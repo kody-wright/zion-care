@@ -32,16 +32,20 @@
    GLOBAL
 ========================================================= */
 
-/* html, body {
-  width: 100dvw;
-  height: 100dvh;
-  margin: 0;
-  padding: 0;
-} */
+
+
+.row {
+  margin-right: 0 !important; /* FIND BETTER WAY TO FIX IF POSSIBLE*/
+}
 
 * {
   box-sizing: border-box;
 }
+
+/* html, body {
+  margin: 0 !important; 
+  padding: 0 !important;
+} */
 
 html {
   scroll-behavior: smooth;
@@ -49,8 +53,6 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
   background: var(--zion-cream);
   color: var(--zion-text);
   font-family:

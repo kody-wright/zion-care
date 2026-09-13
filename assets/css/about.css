@@ -453,8 +453,8 @@
 
 .facility-image {
   position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
+  /* aspect-ratio: 16 / 10;
+  overflow: hidden; */
   background: var(--zion-blue-100);
 }
 

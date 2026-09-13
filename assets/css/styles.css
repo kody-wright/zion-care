@@ -40,7 +40,7 @@
 } */
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -49,6 +49,8 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background: var(--zion-cream);
   color: var(--zion-text);
   font-family:
@@ -105,31 +107,6 @@ a {
     color 0.2s ease,
     background-color 0.2s ease,
     transform 0.2s ease;
-}
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-.skip-link {
-  position: fixed;
-
-  top: -100px;
-  left: 1rem;
-
-  z-index: 2000;
-
-  padding: 0.75rem 1rem;
-
-  background: #ffffff;
-
-  color: var(--zion-blue-950);
-
-  border-radius: 0.5rem;
-}
-
-.skip-link:focus {
-  top: 1rem;
 }
 
 /* =========================================================

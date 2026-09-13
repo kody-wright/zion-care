@@ -32,10 +32,9 @@
    GLOBAL
 ========================================================= */
 
-
-
 .row {
   margin-right: 0 !important; /* FIND BETTER WAY TO FIX IF POSSIBLE*/
+  padding-right: 0 !important; /* FIND BETTER WAY TO FIX IF POSSIBLE*/
 }
 
 * {

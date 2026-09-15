@@ -1,46 +1,198 @@
-// Follow this setup guide to integrate the Deno language server with your editor:
-// https://deno.land/manual/getting_started/setup_your_environment
-// This enables autocomplete, go to definition, etc.
+import { createClient } from "npm:@supabase/supabase-js@2";
 
-// Setup type definitions for built-in Supabase Runtime APIs
-import "@supabase/functions-js/edge-runtime.d.ts";
-import { withSupabase } from "@supabase/server";
-
-console.log("Hello from Functions!");
-
-// This endpoint uses 'publishable' | 'secret' access, apiKey is required.
-// Use publishable for Client-facing, key-validated endpoints
-// Use secret for Server-to-server, internal calls
-export default {
-  fetch: withSupabase({ auth: ["publishable", "secret"] }, async (req, ctx) => {
-    // Called by another service with a secret key
-    // ctx.supabaseAdmin bypasses RLS — use for privileged operations
-    /*
-    if (ctx.authMode === "secret") {
-      const { user_id } = await req.json();
-      const { data } = await ctx.supabaseAdmin.auth.admin.getUserById(user_id);
-
-      return Response.json({
-        email: data?.user?.email,
-      });
-    }
-    */
-
-    const { name } = await req.json();
-
-    return Response.json({
-      message: `Hello ${name}!`,
-    });
-  }),
+const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers":
+        "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-/* To invoke locally:
+Deno.serve(async (req) => {
+    if (req.method === "OPTIONS") {
+        return new Response("ok", {
+            headers: corsHeaders,
+        });
+    }
 
-  1. Run `supabase start` (see: https://supabase.com/docs/reference/cli/supabase-start)
-  2. Make an HTTP request:
+    if (req.method !== "POST") {
+        return new Response(
+            JSON.stringify({
+                success: false,
+                error: "Method not allowed",
+            }),
+            {
+                status: 405,
+                headers: {
+                    ...corsHeaders,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+    }
 
-  curl -i --location --request POST 'http://127.0.0.1:54321/functions/v1/submit-contact' \
-    --header 'apiKey: sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH' \
-    --data '{"name":"Functions"}'
+    try {
+        const body = await req.json();
 
-*/
+        const {
+            first_name,
+            last_name,
+            email,
+            phone,
+            reason,
+            message,
+        } = body;
+
+        if (
+            !first_name ||
+            !last_name ||
+            !email ||
+            !reason ||
+            !message
+        ) {
+            return new Response(
+                JSON.stringify({
+                    success: false,
+                    error: "Please complete all required fields.",
+                }),
+                {
+                    status: 400,
+                    headers: {
+                        ...corsHeaders,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+        }
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            return new Response(
+                JSON.stringify({
+                    success: false,
+                    error: "Please provide a valid email address.",
+                }),
+                {
+                    status: 400,
+                    headers: {
+                        ...corsHeaders,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+        }
+
+        if (message.length > 5000) {
+            return new Response(
+                JSON.stringify({
+                    success: false,
+                    error: "Message is too long.",
+                }),
+                {
+                    status: 400,
+                    headers: {
+                        ...corsHeaders,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+        }
+
+        const supabaseUrl = Deno.env.get("SUPABASE_URL");
+
+        /*
+         * SUPABASE_SECRET_KEYS is automatically available
+         * to Supabase Edge Functions.
+         */
+        const secretKeys =
+            Deno.env.get("SUPABASE_SECRET_KEYS");
+
+        if (!supabaseUrl || !secretKeys) {
+            throw new Error(
+                "Supabase server configuration is missing."
+            );
+        }
+
+        const parsedKeys = JSON.parse(secretKeys);
+
+        const secretKey =
+            parsedKeys.default;
+
+        if (!secretKey) {
+            throw new Error(
+                "Supabase default secret key is missing."
+            );
+        }
+
+        const supabase = createClient(
+            supabaseUrl,
+            secretKey
+        );
+
+        const { data, error } = await supabase
+            .from("contact_submissions")
+            .insert({
+                first_name: first_name.trim(),
+                last_name: last_name.trim(),
+                email: email.trim().toLowerCase(),
+                phone: phone?.trim() || null,
+                reason: reason.trim(),
+                message: message.trim(),
+            })
+            .select("id")
+            .single();
+
+        if (error) {
+            console.error("Database error:", error);
+
+            return new Response(
+                JSON.stringify({
+                    success: false,
+                    error: "Unable to save your message.",
+                }),
+                {
+                    status: 500,
+                    headers: {
+                        ...corsHeaders,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+        }
+
+        return new Response(
+            JSON.stringify({
+                success: true,
+                message:
+                    "Your message has been submitted successfully.",
+                submission_id: data.id,
+            }),
+            {
+                status: 200,
+                headers: {
+                    ...corsHeaders,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+
+    } catch (error) {
+        console.error("Function error:", error);
+
+        return new Response(
+            JSON.stringify({
+                success: false,
+                error:
+                    "Something went wrong while submitting your message.",
+            }),
+            {
+                status: 500,
+                headers: {
+                    ...corsHeaders,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+    }
+});

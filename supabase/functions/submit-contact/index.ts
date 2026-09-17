@@ -1,16 +1,22 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { PDFDocument, StandardFonts, rgb } from "https://esm.sh/pdf-lib@1.17.1";
 
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
     "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response("ok", {
-      headers: corsHeaders,
+    return new Response(null, {
+      status: 204,
+      headers: {
+        ...corsHeaders,
+      },
     });
   }
 
@@ -388,37 +394,134 @@ if (uploadError) {
   );
 }
 
-    // --------------------------------------------------
-    // 3. Update database
-    // --------------------------------------------------
 
-    const { error: updateError } = await supabase
-      .from("contact_submissions")
-      .update({
-        pdf_generated: true,
-      })
-      .eq("id", submission.id);
+   // --------------------------------------------------
+// 3. Update PDF status
+// --------------------------------------------------
 
-    if (updateError) {
-      console.error(
-        "PDF status update error:",
-        updateError
-      );
-    }
+const { error: updateError } = await supabase
+  .from("contact_submissions")
+  .update({
+    pdf_generated: true,
+  })
+  .eq("id", submission.id);
 
-    // --------------------------------------------------
-    // 4. Return PDF
-    // --------------------------------------------------
+if (updateError) {
+  console.error(
+    "PDF status update error:",
+    updateError
+  );
+}
 
-    return new Response(pdfBytes, {
-      status: 200,
+// --------------------------------------------------
+// 4. Send email with Resend
+// --------------------------------------------------
+
+if (!RESEND_API_KEY) {
+  throw new Error("RESEND_API_KEY is not configured.");
+}
+
+const resendResponse = await fetch(
+  "https://api.resend.com/emails",
+  {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "Zion Care <onboarding@resend.dev>",
+      to: ["delivered@resend.dev"],
+      subject: `New Zion Care Contact Submission - ${first_name} ${last_name}`,
+      html: `
+        <h2>New Zion Care Contact Submission</h2>
+
+        <p><strong>Name:</strong> ${first_name} ${last_name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+        <p><strong>Reason:</strong> ${reason}</p>
+
+        <h3>Message</h3>
+        <p>${message}</p>
+
+        <hr>
+
+        <p>
+          <strong>Submission ID:</strong>
+          ${submission.id}
+        </p>
+
+        <p>
+          The complete submission has also been saved as a PDF
+          in Zion Care's Supabase Storage.
+        </p>
+      `,
+    }),
+  }
+);
+
+if (!resendResponse.ok) {
+  const resendError = await resendResponse.text();
+
+  console.error(
+    "Resend error:",
+    resendError
+  );
+
+  return new Response(
+    JSON.stringify({
+      success: false,
+      error: "Submission was saved, but the email could not be sent.",
+    }),
+    {
+      status: 500,
       headers: {
         ...corsHeaders,
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename="zion-care-contact-${submission.id}.pdf"`,
-        "X-Submission-ID": submission.id,
+        "Content-Type": "application/json",
       },
-    });
+    }
+  );
+}
+
+console.log("Resend email sent:", resendResponse);
+
+// --------------------------------------------------
+// 5. Mark email as sent
+// --------------------------------------------------
+
+const { error: emailStatusError } = await supabase
+  .from("contact_submissions")
+  .update({
+    email_sent: true,
+  })
+  .eq("id", submission.id);
+
+if (emailStatusError) {
+  console.error(
+    "Email status update error:",
+    emailStatusError
+  );
+}
+
+// --------------------------------------------------
+// 6. Return success response
+// --------------------------------------------------
+
+return new Response(
+  JSON.stringify({
+    success: true,
+    submission_id: submission.id,
+    pdf_generated: true,
+    email_sent: true,
+  }),
+  {
+    status: 200,
+    headers: {
+      ...corsHeaders,
+      "Content-Type": "application/json",
+    },
+  }
+);
 
   } catch (error) {
     console.error("Function error:", error);
